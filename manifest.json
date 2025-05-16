@@ -1,0 +1,68 @@
+{
+  "name": "Shortcuts for Google.com",
+  "version": "1.0",
+  "description": "Add custom shortcuts from your bookmarks to Google.com homepage",
+  "manifest_version": 3,
+  "permissions": [
+    "bookmarks",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.google.com/*",
+    "*://google.com/*",
+    "*://*.google.co.kr/*",
+    "*://*.google.co.jp/*",
+    "*://*.google.co.uk/*",
+    "*://*.google.de/*",
+    "*://*.google.fr/*",
+    "*://*.google.ca/*",
+    "*://*.google.com.au/*",
+    "*://*.google.ru/*",
+    "*://*.google.it/*",
+    "*://*.google.es/*",
+    "*://*.google.com.br/*",
+    "*://*.google.com.mx/*",
+    "*://*.google.co.in/*",
+    "*://*.google.com.tr/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.google.com/*",
+        "*://google.com/*",
+        "*://*.google.co.kr/*",
+        "*://*.google.co.jp/*",
+        "*://*.google.co.uk/*",
+        "*://*.google.de/*",
+        "*://*.google.fr/*",
+        "*://*.google.ca/*",
+        "*://*.google.com.au/*",
+        "*://*.google.ru/*",
+        "*://*.google.it/*",
+        "*://*.google.es/*",
+        "*://*.google.com.br/*",
+        "*://*.google.com.mx/*",
+        "*://*.google.co.in/*",
+        "*://*.google.com.tr/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_title": "Shortcuts for Google.com"
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+} 

@@ -1,0 +1,513 @@
+:root {
+  --shortcut-text-color: #202124;
+  --plus-icon-color: #202124;
+}
+
+/* Google Shortcuts Container */
+.google-shortcuts-container {
+  width: 100%;
+  text-align: center;
+  clear: both;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  margin: 20px auto; /* 중앙 정렬 */
+  overflow: hidden; /* 내용이 넘치지 않도록 */
+}
+
+/* Shortcuts Row */
+.shortcuts-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  position: relative;
+  align-items: center;
+  gap: 0;
+  width: 100%; /* 전체 너비 사용 */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.shortcuts-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Shortcut */
+.google-shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 8px 4px;
+  padding: 8px;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--shortcut-text-color);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  position: relative;
+  border-radius: 8px;
+  transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s, background-color 0.2s;
+  z-index: 1;
+}
+
+.google-shortcut:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* 바로가기 내부 요소들도 포인터 이벤트 적용 */
+.google-shortcut * {
+  pointer-events: none;
+}
+
+/* Favicon in shortcuts */
+.shortcut-favicon {
+  width: 48px;
+  height: 48px;
+  min-height: 48px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background-color: #f1f3f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: none;
+}
+
+.shortcut-favicon img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Text label for shortcuts */
+.google-shortcut span {
+  font-size: 14px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0;
+  color: var(--shortcut-text-color);
+  font-weight: 500;
+}
+
+.google-shortcut:hover span {
+  font-weight: 500;
+}
+
+/* Add shortcut button */
+.google-add-shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 8px;
+  padding: 8px;
+  width: 80px;
+  height: 80px;
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--shortcut-text-color);
+  font-size: 13px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.google-add-shortcut:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* 원형 배경의 + 아이콘 */
+.add-shortcut-circle {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  background-color: #cccccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 48px;
+  color: var(--plus-icon-color);
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+/* 텍스트 스타일 */
+.google-add-shortcut span {
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  white-space: normal;
+  color: var(--shortcut-text-color);
+  padding: 0 2px;
+  font-weight: 500;
+}
+
+/* Gmail 스타일과 일치시키기 위한 추가 스타일은 불필요 - Gmail 클래스를 그대로 사용 */
+
+/* Chrome-style Bookmark Dialog */
+.bookmark-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.bookmark-dialog {
+  width: 400px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: dialogAppear 0.2s ease-out;
+}
+
+@keyframes dialogAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bookmark-dialog-header {
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #202124;
+  border-bottom: 1px solid #dadce0;
+}
+
+.bookmark-dialog-content {
+  padding: 20px 20px 10px;
+}
+
+.bookmark-input-container {
+  margin-bottom: 16px;
+}
+
+.bookmark-input-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #5f6368;
+}
+
+.bookmark-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #202124;
+  transition: border-color 0.2s;
+}
+
+.bookmark-input:focus {
+  outline: none;
+  border-color: #4285f4;
+}
+
+.bookmark-input.error {
+  border-color: #ea4335;
+}
+
+.bookmark-dialog-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 20px 16px;
+  gap: 12px;
+}
+
+.bookmark-dialog-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: background-color 0.2s;
+}
+
+.cancel-button {
+  color: #5f6368;
+}
+
+.cancel-button:hover {
+  background-color: rgba(95, 99, 104, 0.1);
+}
+
+.save-button {
+  color: #4285f4;
+}
+
+.save-button:hover {
+  background-color: rgba(66, 133, 244, 0.1);
+}
+
+/* Background settings overlay - same style as bookmark dialog */
+.google-bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Background settings dialog */
+.google-bg-dialog {
+  width: 380px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: dialogAppear 0.2s ease-out;
+}
+
+.google-bg-dialog h3 {
+  padding: 16px 20px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #202124;
+  border-bottom: 1px solid #dadce0;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Settings section */
+.settings-section {
+  margin: 0;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.settings-section:last-of-type {
+  border-bottom: none;
+}
+
+.settings-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #5f6368;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.settings-section input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #202124;
+  font-family: 'Roboto', Arial, sans-serif;
+  transition: border-color 0.2s;
+}
+
+.settings-section input[type="text"]:focus {
+  outline: none;
+  border-color: #4285f4;
+}
+
+.settings-section input[type="color"] {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Settings buttons */
+.settings-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 20px 16px;
+  gap: 12px;
+  border-top: 1px solid #f1f3f4;
+}
+
+.settings-buttons button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: 'Roboto', Arial, sans-serif;
+  transition: background-color 0.2s;
+}
+
+.settings-buttons button:first-child {
+  color: #4285f4;
+}
+
+.settings-buttons button:first-child:hover {
+  background-color: rgba(66, 133, 244, 0.1);
+}
+
+.settings-buttons button:nth-child(2) {
+  color: #5f6368;
+}
+
+.settings-buttons button:nth-child(2):hover {
+  background-color: rgba(95, 99, 104, 0.1);
+}
+
+.settings-buttons button:last-child {
+  color: #ea4335;
+}
+
+.settings-buttons button:last-child:hover {
+  background-color: rgba(234, 67, 53, 0.1);
+}
+
+/* 드래그 상태의 컨테이너 */
+.google-shortcuts-container.dragging-active {
+  position: relative;
+}
+
+/* 드래그 중인 요소 스타일 */
+.google-shortcut.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  background-color: rgba(200, 200, 200, 0.1);
+}
+
+/* 드래그 시 효과 */
+.google-shortcut[draggable="true"] {
+  user-select: none;
+  -webkit-user-drag: element;
+  cursor: grab;
+  transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.google-shortcut[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+/* 아이템 선택 방지 */
+.google-shortcuts-container.dragging * {
+  user-select: none;
+}
+
+/* 드롭 위치 표시선 */
+.drop-marker {
+  position: absolute;
+  width: 4px;
+  height: 80px;
+  background-color: #4285f4;
+  border-radius: 2px;
+  z-index: 100;
+  pointer-events: none;
+  box-shadow: 0 0 3px rgba(66, 133, 244, 0.8);
+  transition: left 0.15s ease-out, top 0.15s ease-out;
+  animation: pulseDropMarker 1.5s infinite;
+}
+
+@keyframes pulseDropMarker {
+  0% {
+    opacity: 0.7;
+    box-shadow: 0 0 3px rgba(66, 133, 244, 0.8);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(66, 133, 244, 0.9);
+  }
+  100% {
+    opacity: 0.7;
+    box-shadow: 0 0 3px rgba(66, 133, 244, 0.8);
+  }
+}
+
+/* 컨텍스트 메뉴 스타일 */
+.shortcut-context-menu {
+  min-width: 120px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 8px 0;
+  z-index: 10000;
+  font-family: 'Roboto', Arial, sans-serif;
+  font-size: 14px;
+  animation: menuAppear 0.1s ease-out;
+}
+
+@keyframes menuAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.context-menu-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.context-menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+/* 반응형을 위한 미디어 쿼리 추가 */
+@media screen and (max-width: 980px) {
+  .google-shortcuts-container,
+  .shortcuts-row {
+    padding: 0 10px;
+  }
+  
+  .google-shortcut {
+    margin: 8px 2px; /* 좁은 화면에서 마진 감소 */
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .google-shortcut {
+    width: 70px;
+    height: 70px;
+    margin: 6px 2px;
+  }
+  
+  .shortcut-favicon {
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+  }
+  
+  .google-shortcut span {
+    font-size: 12px;
+  }
+} 
